@@ -44,12 +44,15 @@ def main(domain_name, record_name, configuration):
 
 if __name__ == '__main__':
     parse = argparse.ArgumentParser(description='DynDNS for Rackspace CloudDNS')
-    parse.add_argument('--domain', dest='domain_name', required=True,
-                       help='Domain domain_namee that record is under. ex: example.com')
-    parse.add_argument('--record', dest='record_name', required=True,
+    parse.add_argument('-d', dest='domain_name', required=True,
+                       metavar='example.com',
+                       help='Domain name that the record is under. '
+                       'ex: example.com')
+    parse.add_argument('-r', dest='record_name', required=True,
+                       metavar='h.example.com',
                        help='Record for the update. ex: sub.example.com')
-    parse.add_argument('--config', dest='configuration', required=False,
-                       help='Configuration file.')
+    parse.add_argument('-c', dest='configuration', required=False,
+                       metavar='path', help='Configuration file.')
     args = parse.parse_args()
 
     if args.configuration:
